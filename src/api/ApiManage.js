@@ -37,7 +37,7 @@ apiRequest.interceptors.response.use(
             ClearToken()
             // 跳转到登录页面
             console.log("err on auth token")
-            window.location.href = "/management/login";
+            window.location.href = "/login";
             console.log("reloaded to login")
 
             return Promise.reject(data)

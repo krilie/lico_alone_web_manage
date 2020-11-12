@@ -30,7 +30,7 @@ export default class LoginPage extends React.Component {
             userLogin(values).then(res => {
                 if (res.data.code === 2000) {
                     this.setToken(res.data.data.token)
-                    this.goToPage("/management/manage")
+                    this.goToPage("/manage")
                 } else {
                     message.error("from login page:" + res.data.message + res.data.detail)
                 }

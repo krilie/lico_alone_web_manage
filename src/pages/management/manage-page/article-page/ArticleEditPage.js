@@ -78,7 +78,7 @@ class ArticleEditPage extends Component {
         this.setState({waiting: true})
         manageCreateArticle(data).then(res => {
             message.info(res.data.message)
-            this.props.history.push("/management/manage/article")
+            this.props.history.push("/manage/article")
         }).catch(err => {
             message.error(err.toString())
         }).finally(() => {

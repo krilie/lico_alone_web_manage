@@ -118,7 +118,7 @@ class ArticleListPage extends Component {
             render: article =>
                 <Row>
                     <Button style={{margin: "3px"}} type={"primary"} onClick={() => {
-                        this.props.history.push('/management/manage/article/edit/' + article.id)
+                        this.props.history.push('/manage/article/edit/' + article.id)
                     }}>编辑</Button>
                     <Button style={{margin: "3px"}} type={"danger"}
                             onClick={() => this.deleteArticleById(article.id)}>删除</Button>
@@ -153,7 +153,7 @@ class ArticleListPage extends Component {
                     <Col style={{textAlign: "right"}} span={12}>
                         <Button style={{margin: "3px"}} type={"primary"}
                                 onClick={() => {
-                                    this.props.history.push('/management/manage/article/create')
+                                    this.props.history.push('/manage/article/create')
                                 }}>添加</Button>
                         <Button style={{margin: "3px"}} type={"primary"}
                                 onClick={() => this.reloadArticleList()}>刷新</Button>
