@@ -80,7 +80,17 @@
     "webpack": "4.41.5",
     "webpack-dev-server": "^3.11.0",
     "webpack-manifest-plugin": "2.2.0",
-    "workbox-webpack-plugin": "4.3.1"
+    "workbox-webpack-plugin": "4.3.1",
+    "highlight.js": "^10.3.2",
+    "less": "^3.12.2",
+    "lodash-webpack-plugin": "^0.11.5",
+    "prop-types": "^15.7.2",
+    "react-image-gallery": "^1.0.8",
+    "react-router-dom": "^5.2.0",
+    "reqwest": "^2.0.5",
+    "storejs": "^1.0.25",
+    "useless-files-webpack-plugin": "^1.0.1",
+    "@ckeditor/ckeditor5-react": "^3.0.0"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -157,14 +167,6 @@
     ]
   },
   "devDependencies": {
-    "highlight.js": "^10.3.2",
-    "less": "^3.12.2",
-    "lodash-webpack-plugin": "^0.11.5",
-    "prop-types": "^15.7.2",
-    "react-image-gallery": "^1.0.8",
-    "react-router-dom": "^5.2.0",
-    "reqwest": "^2.0.5",
-    "storejs": "^1.0.25",
-    "useless-files-webpack-plugin": "^1.0.1"
+    "ckeditor5-custom-build": "0.0.1"
   }
 }
