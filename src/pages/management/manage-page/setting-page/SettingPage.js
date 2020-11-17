@@ -1,22 +1,29 @@
 import React from "react";
 import "./SettingPage.less"
-import {connect} from "react-redux";
-import {getSettingListAllRedux} from "../../../../api/ManageSettingApi";
-import store from "../../../../redux/RuduxIndex"
+import {getSettingList} from "../../../../api/ManageSettingApi";
 import SettingCard from "../../../../components/setting_card/SettingCard";
 import {Card} from "antd";
+import {checkResDataWithToast} from "../../../../api/ApiBaseUrl";
 
 class SettingPage extends React.Component {
 
+    state = {settings:[]}
+
     goToPage = path => this.props.history.push(path)
 
-    constructor(props) {
-        super(props);
-        store.dispatch(getSettingListAllRedux())
+    componentDidMount() {
+        getSettingList().then(res=>{
+            const settings = checkResDataWithToast(res);
+            if (settings !== undefined){
+                this.setState({
+                    settings:settings
+                })
+            }
+        })
     }
 
     render() {
-        const {settings} = this.props
+        const {settings} = this.state
         return (
             <Card className="setting-card" title={<div>配置</div>}>
                 {settings.map(val => <SettingCard key={val.name} data={val}/>)}
@@ -25,4 +32,4 @@ class SettingPage extends React.Component {
     }
 }
 
-export default SettingPage = connect((state) => ({...state}))(SettingPage);
+export default SettingPage

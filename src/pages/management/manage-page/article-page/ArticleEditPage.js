@@ -5,11 +5,8 @@ import "./ArticleEditPage.less"
 import TextArea from "antd/lib/input/TextArea";
 import AutoCompleteImageFile from "../../../../components/imageFile/AutoCompleteImageFile";
 import ArrowLeftOutlined from "@ant-design/icons/lib/icons/ArrowLeftOutlined";
-import CodeBlock from "../../../../components/mark_down/CodeBlock";
-import ReactMarkdown from "react-markdown/with-html";
 import SelectFileModal from "../../../../components/imageFile/SelectFileModal";
-import "github-markdown-css"
-import "highlight.js/styles/github.css"
+
 
 class ArticleEditPage extends Component {
 
@@ -17,7 +14,6 @@ class ArticleEditPage extends Component {
         super(props);
         this.state = {
             isCreate: false,
-            showMarkDownView: true,
             currentContent: "",
             articleId: props.match.params.articleId,
             waiting: false,
@@ -36,17 +32,17 @@ class ArticleEditPage extends Component {
             selectFileModal: {
                 isShow: false,
                 onOk: () => {
-                    this.setState({selectFileModal: {...this.state.selectFileModal,isShow: false}})
+                    this.setState({selectFileModal: {...this.state.selectFileModal, isShow: false}})
                 },
                 onCancel: () => {
-                    this.setState({selectFileModal: {...this.state.selectFileModal,isShow: false}})
+                    this.setState({selectFileModal: {...this.state.selectFileModal, isShow: false}})
                 },
             }
         }
     }
 
     showSelectFileModal = () => {
-        this.setState({selectFileModal: {...this.state.selectFileModal,isShow: true}})
+        this.setState({selectFileModal: {...this.state.selectFileModal, isShow: true}})
     }
 
     componentDidMount() {
@@ -108,7 +104,7 @@ class ArticleEditPage extends Component {
     formRef = React.createRef();
 
     render() {
-        const {isCreate, article, showMarkDownView, currentContent, selectFileModal} = this.state
+        const {isCreate, article, selectFileModal} = this.state
         const titleVal = <div>
             <Row justify="start">
                 <Col flex="30px"><ArrowLeftOutlined style={{color: "#eb2f96", fontSize: "20px"}}
@@ -121,28 +117,13 @@ class ArticleEditPage extends Component {
             </Row>
         </div>
 
-        const contentView = showMarkDownView ?
-            <Row>
-                <Col span={11}>
-                    <Form.Item name="content_markdown">
-                        <ReactMarkdown className="markdown-body markdown-content" renderers={{code: CodeBlock,}}
-                                       escapeHtml={false} skipHtml={false} source={currentContent}/>
-                    </Form.Item>
-                </Col>
-                <Col span={12}>
-                    <Form.Item name="content">
-                        <TextArea onChange={(event) => this.setState({currentContent: event.target.value})}
-                                  autoSize={{maxRows: 60, minRows: 6}} defaultValue="" placeholder="请输入"/>
-                    </Form.Item>
-                </Col>
-            </Row>
-            : <Row>
-                <Col span={24}>
-                    <Form.Item name="content">
-                        <TextArea autoSize={{maxRows: 60, minRows: 6}} defaultValue="" placeholder="请输入"/>
-                    </Form.Item>
-                </Col>
-            </Row>
+        const contentView = <Row>
+            <Col span={24}>
+                <Form.Item name="content">
+                    <TextArea autoSize={{maxRows: 60, minRows: 6}} defaultValue="" placeholder="请输入"/>
+                </Form.Item>
+            </Col>
+        </Row>
 
         // 查询form参数
         const createForm = <Form
