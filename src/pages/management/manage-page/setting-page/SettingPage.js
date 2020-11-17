@@ -1,6 +1,5 @@
 import React from "react";
 import "./SettingPage.less"
-import {connect} from "react-redux";
 import {getSettingList} from "../../../../api/ManageSettingApi";
 import SettingCard from "../../../../components/setting_card/SettingCard";
 import {Card} from "antd";
@@ -33,4 +32,4 @@ class SettingPage extends React.Component {
     }
 }
 
-export default SettingPage = connect((state) => ({...state}))(SettingPage);
+export default SettingPage

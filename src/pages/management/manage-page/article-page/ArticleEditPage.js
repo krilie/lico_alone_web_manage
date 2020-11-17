@@ -104,7 +104,7 @@ class ArticleEditPage extends Component {
     formRef = React.createRef();
 
     render() {
-        const {isCreate, article, currentContent, selectFileModal} = this.state
+        const {isCreate, article, selectFileModal} = this.state
         const titleVal = <div>
             <Row justify="start">
                 <Col flex="30px"><ArrowLeftOutlined style={{color: "#eb2f96", fontSize: "20px"}}
