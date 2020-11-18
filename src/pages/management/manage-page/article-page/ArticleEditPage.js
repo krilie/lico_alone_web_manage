@@ -7,7 +7,7 @@ import AutoCompleteImageFile from "../../../../components/imageFile/AutoComplete
 import ArrowLeftOutlined from "@ant-design/icons/lib/icons/ArrowLeftOutlined";
 import SelectFileModal from "../../../../components/imageFile/SelectFileModal";
 import ClassicEditor from "ckeditor5-mybuild"
-import { CKEditor } from '@ckeditor/ckeditor5-react';
+import {CKEditor} from '@ckeditor/ckeditor5-react';
 
 class ArticleEditPage extends Component {
 
@@ -67,7 +67,7 @@ class ArticleEditPage extends Component {
         const data = {
             id: this.formRef.current.getFieldValue("id"),
             title: this.formRef.current.getFieldValue("title"),
-            content: this.formRef.current.getFieldValue("content"),
+            content: this.state.article.content,
             picture: this.formRef.current.getFieldValue("picture"),
             description: this.formRef.current.getFieldValue("description"),
             sort: this.formRef.current.getFieldValue("sort"),
@@ -87,7 +87,7 @@ class ArticleEditPage extends Component {
         const data = {
             id: this.formRef.current.getFieldValue("id"),
             title: this.formRef.current.getFieldValue("title"),
-            content: this.formRef.current.getFieldValue("content"),
+            content: this.state.article.content,
             picture: this.formRef.current.getFieldValue("picture"),
             description: this.formRef.current.getFieldValue("description"),
             sort: this.formRef.current.getFieldValue("sort"),
@@ -121,27 +121,27 @@ class ArticleEditPage extends Component {
         const contentView = <Row>
             <Col span={24}>
                 <Form.Item name="content">
-                    <CKEditor
-                        config={{
 
+                    <CKEditor
+                        config={{}}
+                        editor={ClassicEditor}
+                        data={article.content}
+                        onReady={editor => {
                         }}
-                        editor={ ClassicEditor }
-                        data="<p>Hello from CKEditor 5!</p>"
-                        onReady={ editor => {
-                            // You can store the "editor" and use when it is needed.
-                            console.log( 'Editor is ready to use!', editor );
-                        } }
-                        onChange={ ( event, editor ) => {
+                        onChange={(event, editor) => {
                             const data = editor.getData();
-                            console.log( { event, editor, data } );
-                        } }
-                        onBlur={ ( event, editor ) => {
-                            console.log( 'Blur.', editor );
-                        } }
-                        onFocus={ ( event, editor ) => {
-                            console.log( 'Focus.', editor );
-                        } }
+                            this.setState({
+                                article: {
+                                    content: data
+                                }
+                            })
+                        }}
+                        onBlur={(event, editor) => {
+                        }}
+                        onFocus={(event, editor) => {
+                        }}
                     />
+
                 </Form.Item>
             </Col>
         </Row>
@@ -187,7 +187,6 @@ class ArticleEditPage extends Component {
                 </Col>
             </Row>
         </Form>
-
 
         return (
             <Card className="carousel-card" bodyStyle={{padding: "10px"}} title={titleVal}>
