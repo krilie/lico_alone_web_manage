@@ -4,7 +4,7 @@ import {Button, Card, Col, message, Row, Table} from "antd";
 import "./CarouselPage.less"
 import "../../../../utils/common.less"
 import CarouselCreateUpdateModal from "./CarouselCreateUpdateModal";
-import {replaceForImageProxy} from "../../../../utils/ImageProxy";
+import {imageProxied} from "../../../../api/ApiBaseUrl";
 
 class CarouselPage extends Component {
 
@@ -110,7 +110,7 @@ class CarouselPage extends Component {
         },
         {
             title: 'url', key: 'url', dataIndex: 'url',
-            render: text => <img src={replaceForImageProxy(text,"150x")} alt={"img"}/>
+            render: text => <img src={imageProxied(text,"150x100,fit")} alt={"img"}/>
         },
         {
             title: '操作', key: 'operation',

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {AutoComplete, Button, message, Spin} from "antd";
 import {manageGetFilePage} from "../../api/ManageFileApi";
-import {replaceForImageProxy} from "../../utils/ImageProxy";
+import {imageProxied} from "../../api/ApiBaseUrl";
 
 class AutoCompleteImageFile extends Component {
 
@@ -43,7 +43,7 @@ class AutoCompleteImageFile extends Component {
             imgList.map(val => {
                 return {
                     value: val.url,
-                    label: <img src={replaceForImageProxy(val.url,"150x")} height="150px" width="auto" alt={"img"}/>
+                    label: <img src={imageProxied(val.url,"150x100,fit")} height="150px" width="auto" alt={"img"}/>
                 }
             });
         options.push({

@@ -6,7 +6,8 @@ import TextArea from "antd/lib/input/TextArea";
 import AutoCompleteImageFile from "../../../../components/imageFile/AutoCompleteImageFile";
 import ArrowLeftOutlined from "@ant-design/icons/lib/icons/ArrowLeftOutlined";
 import SelectFileModal from "../../../../components/imageFile/SelectFileModal";
-
+import ClassicEditor from "ckeditor5-mybuild"
+import {CKEditor} from '@ckeditor/ckeditor5-react';
 
 class ArticleEditPage extends Component {
 
@@ -66,7 +67,7 @@ class ArticleEditPage extends Component {
         const data = {
             id: this.formRef.current.getFieldValue("id"),
             title: this.formRef.current.getFieldValue("title"),
-            content: this.formRef.current.getFieldValue("content"),
+            content: this.state.article.content,
             picture: this.formRef.current.getFieldValue("picture"),
             description: this.formRef.current.getFieldValue("description"),
             sort: this.formRef.current.getFieldValue("sort"),
@@ -86,7 +87,7 @@ class ArticleEditPage extends Component {
         const data = {
             id: this.formRef.current.getFieldValue("id"),
             title: this.formRef.current.getFieldValue("title"),
-            content: this.formRef.current.getFieldValue("content"),
+            content: this.state.article.content,
             picture: this.formRef.current.getFieldValue("picture"),
             description: this.formRef.current.getFieldValue("description"),
             sort: this.formRef.current.getFieldValue("sort"),
@@ -120,7 +121,27 @@ class ArticleEditPage extends Component {
         const contentView = <Row>
             <Col span={24}>
                 <Form.Item name="content">
-                    <TextArea autoSize={{maxRows: 60, minRows: 6}} defaultValue="" placeholder="请输入"/>
+
+                    <CKEditor
+                        config={{}}
+                        editor={ClassicEditor}
+                        data={article.content}
+                        onReady={editor => {
+                        }}
+                        onChange={(event, editor) => {
+                            const data = editor.getData();
+                            this.setState({
+                                article: {
+                                    content: data
+                                }
+                            })
+                        }}
+                        onBlur={(event, editor) => {
+                        }}
+                        onFocus={(event, editor) => {
+                        }}
+                    />
+
                 </Form.Item>
             </Col>
         </Row>
@@ -166,7 +187,6 @@ class ArticleEditPage extends Component {
                 </Col>
             </Row>
         </Form>
-
 
         return (
             <Card className="carousel-card" bodyStyle={{padding: "10px"}} title={titleVal}>

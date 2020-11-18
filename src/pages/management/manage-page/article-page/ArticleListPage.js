@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {manageDeleteArticle, manageQueryArticle} from "../../../../api/ManageAritcleApi";
-import {Button, Card, Col, Form, Input, message, Row, Table} from "antd";
+import {Divider, Button, Card, Col, Form, Input, message, Row, Table} from "antd";
 import "./ArticleListPage.less"
-import {replaceForImageProxy} from "../../../../utils/ImageProxy";
+import {imageProxied} from "../../../../api/ApiBaseUrl";
 
 class ArticleListPage extends Component {
 
@@ -93,26 +93,29 @@ class ArticleListPage extends Component {
      * "sort": 0,
      */
     columns = [
-        {title: 'ID', key: 'id', dataIndex: 'id'},
+        {title: 'ID', key: 'id', dataIndex: 'id',render: val=><div style={{width:"50px"}}>{val}</div>},
         {
             title: '图片', key: 'picture', dataIndex: 'picture',
-            render: text => <img src={replaceForImageProxy(text,"200x")} alt={"img"}/>
+            render: text => <img style={{minWidth:"200px"}} src={imageProxied(text,"200x150,fit")} alt={"img"}/>
         },
-        {title: '标题', key: 'title', dataIndex: 'title', render: val => <div>{val}</div>},
         {
-            title: '描述',
-            key: 'description',
-            dataIndex: 'description',
-            render: val => <div className="article-layout-content-real">{val}</div>
+            title: '标题&描述&PV&排序', key: 'title',
+            render: val =><div>
+                <div style={{minWidth:"200px"}}>title:<strong>{val.title}</strong></div>
+                <Divider style={{margin:"0"}}/>
+                <div style={{minWidth:"200px"}}>des:<strong>{val.description}</strong></div>
+                <Divider style={{margin:"0"}}/>
+                <div style={{minWidth:"200px"}}>pv:<strong>{val.pv}</strong></div>
+                <Divider style={{margin:"0"}}/>
+                <div style={{minWidth:"200px"}}>sort:<strong>{val.sort}</strong></div>
+            </div>
         },
         {
             title: '内容',
             key: 'content',
             dataIndex: 'content',
-            render: val => <div className="article-layout-content-real">{val}</div>
+            render: val => <div className="article-layout-content-real" dangerouslySetInnerHTML={{__html:val}}/>
         },
-        {title: 'PV', key: 'pv', dataIndex: 'pv', render: val => <div>{val}</div>},
-        {title: '排序', key: 'sort', dataIndex: 'sort', render: val => <div>{val}</div>},
         {
             title: '操作', key: 'operation',
             render: article =>
