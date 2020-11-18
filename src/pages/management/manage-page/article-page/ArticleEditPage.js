@@ -6,7 +6,7 @@ import TextArea from "antd/lib/input/TextArea";
 import AutoCompleteImageFile from "../../../../components/imageFile/AutoCompleteImageFile";
 import ArrowLeftOutlined from "@ant-design/icons/lib/icons/ArrowLeftOutlined";
 import SelectFileModal from "../../../../components/imageFile/SelectFileModal";
-import ClassicEditor from "ckeditor5-custom-build"
+import ClassicEditor from "ckeditor5-mybuild"
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 
 class ArticleEditPage extends Component {
