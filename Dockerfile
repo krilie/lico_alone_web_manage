@@ -1,4 +1,4 @@
-FROM node:lts as webBuilder
+FROM node:10-slim as webBuilder
 MAINTAINER livo
 
 ADD ./ /lico_web_manage
