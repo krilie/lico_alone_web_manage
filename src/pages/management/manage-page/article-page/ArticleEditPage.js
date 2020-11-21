@@ -121,9 +121,66 @@ class ArticleEditPage extends Component {
         const contentView = <Row>
             <Col span={24}>
                 <Form.Item name="content">
-
                     <CKEditor
-                        config={{}}
+                        config={{
+                            toolbar: {
+                                items: [
+                                    'heading',
+                                    '|',
+                                    'bold',
+                                    'italic',
+                                    'link',
+                                    'bulletedList',
+                                    'numberedList',
+                                    '|',
+                                    'indent',
+                                    'outdent',
+                                    '|',
+                                    'imageUpload',
+                                    'blockQuote',
+                                    'insertTable',
+                                    'mediaEmbed',
+                                    'undo',
+                                    'redo',
+                                    'CKFinder',
+                                    'code',
+                                    'codeBlock',
+                                    'alignment',
+                                    'exportPdf',
+                                    'exportWord',
+                                    'fontBackgroundColor',
+                                    'fontColor',
+                                    'fontSize',
+                                    'fontFamily',
+                                    'highlight',
+                                    'horizontalLine',
+                                    'htmlEmbed',
+                                    'MathType',
+                                    'ChemType',
+                                    'specialCharacters',
+                                    'underline',
+                                    '|'
+                                ]
+                            },
+                            language: 'zh-cn',
+                            image: {
+                                toolbar: [
+                                    'imageTextAlternative',
+                                    'imageStyle:full',
+                                    'imageStyle:side'
+                                ]
+                            },
+                            table: {
+                                contentToolbar: [
+                                    'tableColumn',
+                                    'tableRow',
+                                    'mergeTableCells',
+                                    'tableCellProperties',
+                                    'tableProperties'
+                                ]
+                            },
+                            licenseKey: '',
+                        }}
                         editor={ClassicEditor}
                         data={article.content}
                         onReady={editor => {
