@@ -1,0 +1,20 @@
+
+.setting-card .ant-card-head {
+    margin: 0 10px;
+    padding: 0;
+}
+
+.setting-card .ant-card-head-title {
+    padding: 0;
+    margin: 3px 0;
+}
+
+.setting-card .ant-card-body {
+    padding: 4px;
+}
+
+
+.setting-card div {
+    min-height: unset;
+    line-height: inherit;
+}

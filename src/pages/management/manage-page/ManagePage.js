@@ -1,6 +1,6 @@
 import {Layout, Menu} from 'antd';
 import React from "react";
-import "./ManagePage.less"
+import "./ManagePage.css"
 import {Route, Switch} from "react-router";
 import SettingPage from "./setting-page/SettingPage";
 import FilePage from "./file-page/FilePage";

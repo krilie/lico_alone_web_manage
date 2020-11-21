@@ -1,5 +1,5 @@
 import React from "react";
-import "./Management.less"
+import "./Management.css"
 import {Redirect, Route, Switch} from "react-router-dom";
 import LoginPage from "./login-page/LoginPage";
 import ManagePage from "./manage-page/ManagePage";

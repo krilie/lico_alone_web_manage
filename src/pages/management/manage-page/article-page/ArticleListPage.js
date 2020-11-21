@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {manageDeleteArticle, manageQueryArticle} from "../../../../api/ManageAritcleApi";
 import {Divider, Button, Card, Col, Form, Input, message, Row, Table} from "antd";
-import "./ArticleListPage.less"
+import "./ArticleListPage.css"
 import {imageProxied} from "../../../../api/ApiBaseUrl";
 
 class ArticleListPage extends Component {

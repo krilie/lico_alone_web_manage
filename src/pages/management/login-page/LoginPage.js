@@ -1,5 +1,5 @@
 import React from "react";
-import "./LoginPage.less"
+import "./LoginPage.css"
 import {SetUserToken} from "../../../utils/LocalStorageUtil";
 import {Button, Col, Form, Input, message, Row} from "antd";
 import {userLogin} from "../../../api/ManageUserApi";
