@@ -1,0 +1,33 @@
+.setting-text-area {
+    font-size: 18px;
+}
+
+.extra-area-button {
+    margin: 10px;
+}
+
+.setting-card-title {
+    padding: 3px;
+    margin: 3px;
+}
+
+.setting-card-style .ant-card-head-title {
+    padding: 0;
+    margin: 0;
+}
+
+.setting-card-style .ant-card-head {
+    min-height: unset;
+    padding: 0;
+    margin: 0;
+}
+
+.setting-card-style .ant-card-body {
+    padding: 0;
+    margin: 0;
+}
+
+.setting-card-style {
+    padding: 3px;
+    margin: 3px;
+}

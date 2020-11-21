@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import "./FilePage.less"
+import "./FilePage.css"
 import {Button, Card, Col, DatePicker, Form, message, Modal, Row, Table, Upload} from "antd";
 import {manageDeleteFile, manageGetFilePage, manageUpdateFile} from "../../../../api/ManageFileApi";
 import UploadOutlined from "@ant-design/icons/lib/icons/UploadOutlined";

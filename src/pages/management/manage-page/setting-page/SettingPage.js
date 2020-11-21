@@ -1,5 +1,5 @@
 import React from "react";
-import "./SettingPage.less"
+import "./SettingPage.css"
 import {getSettingList} from "../../../../api/ManageSettingApi";
 import SettingCard from "../../../../components/setting_card/SettingCard";
 import {Card} from "antd";

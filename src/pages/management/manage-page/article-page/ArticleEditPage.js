@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {manageCreateArticle, manageGetArticleById, manageUpdateArticle} from "../../../../api/ManageAritcleApi";
 import {Button, Card, Col, Form, Input, InputNumber, message, Row} from "antd";
-import "./ArticleEditPage.less"
+import "./ArticleEditPage.css"
 import TextArea from "antd/lib/input/TextArea";
 import AutoCompleteImageFile from "../../../../components/imageFile/AutoCompleteImageFile";
 import ArrowLeftOutlined from "@ant-design/icons/lib/icons/ArrowLeftOutlined";

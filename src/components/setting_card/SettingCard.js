@@ -1,5 +1,5 @@
 import React from "react";
-import "./SettingCard.less"
+import "./SettingCard.css"
 import {Button, Card, Col, Input, message, Row} from "antd";
 import {updateSettingItem} from "../../api/ManageSettingApi";
 

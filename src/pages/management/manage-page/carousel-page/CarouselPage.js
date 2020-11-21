@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {manageDeleteCarouselById, manageGetCarouselList} from "../../../../api/ManageCarouselApi";
 import {Button, Card, Col, message, Row, Table} from "antd";
-import "./CarouselPage.less"
+import "./CarouselPage.css"
 import "../../../../utils/common.less"
 import CarouselCreateUpdateModal from "./CarouselCreateUpdateModal";
 import {imageProxied} from "../../../../api/ApiBaseUrl";
