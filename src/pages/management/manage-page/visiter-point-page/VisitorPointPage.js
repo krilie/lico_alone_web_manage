@@ -59,18 +59,25 @@ class VisitorPointPage extends Component {
         const {mapKey, marker, currentPos, zoom} = this.state;
         const Markers = marker.map(m => <Marker label={<div>{m.city}</div>} autoRotation={true}
                                                 position={[m.lon, m.lat]}/>)
-        const markerListView = marker.map(m => <li onClick={e => this.toPoint(m.lon, m.lat)}
-                                                   className="point-list-item">{m.city}-{m.lon}-{m.lat}</li>)
+        const markerListView = marker.map(m => {
+            if (currentPos[0] === m.lon && currentPos[1] === m.lat){
+                return <li onClick={e => this.toPoint(m.lon, m.lat)}
+                           className="point-list-item-current">{m.city}-{m.lon}-{m.lat}</li>
+            }else{
+                return <li onClick={e => this.toPoint(m.lon, m.lat)}
+                           className="point-list-item">{m.city}-{m.lon}-{m.lat}</li>
+            }
+        })
         return mapKey === ""
             ?
             <div>loading...</div>
             :
             <Row style={{height: "100%", width: "100%"}}>
-                <Col span={4}>
+                <Col className="point-list" span={4}>
                     <div className="point-list-item" onClick={e=>this.resetPoint()}>共:{Markers.length}</div>
                     {markerListView}
                 </Col>
-                <Col style={{height: "100%", width: "100%"}} span={20}>
+                <Col span={20}>
                     <Map
                         amapkey={mapKey}
                         plugins={["ToolBar", 'Scale', 'OverView', 'MapType']}
