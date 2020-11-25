@@ -72,10 +72,12 @@ class VisitorPointPage extends Component {
             ?
             <div>loading...</div>
             :
-            <Row style={{height: "100%", width: "100%"}}>
-                <Col className="point-list" span={4}>
-                    <div className="point-list-item" onClick={e=>this.resetPoint()}>共:{Markers.length}</div>
-                    {markerListView}
+            <Row>
+                <Col span={4}>
+                    <div className="point-list">
+                        <div className="point-list-item" onClick={e=>this.resetPoint()}>共:{Markers.length}</div>
+                        {markerListView}
+                    </div>
                 </Col>
                 <Col span={20}>
                     <Map
