@@ -6,7 +6,8 @@ import {apiBaseUrl} from "./ApiBaseUrl";
 
 // api请求组 外层返回结构终一
 const apiRequest = axios.create({
-    baseURL: apiBaseUrl
+    baseURL: apiBaseUrl,
+    withCredentials: true
 })
 
 let base = "/api";
