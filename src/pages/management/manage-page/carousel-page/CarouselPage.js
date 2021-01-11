@@ -81,7 +81,7 @@ class CarouselPage extends Component {
                 carousels: res.data.data
             })
         }).catch(err => {
-            message.error(err)
+            message.error(err.toString())
         }).finally(() => {
             this.setState({loading: false})
         })

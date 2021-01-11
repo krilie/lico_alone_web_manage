@@ -7,7 +7,7 @@ import {apiBaseUrl} from "./ApiBaseUrl";
 // api请求组 外层返回结构终一
 const apiRequest = axios.create({
     baseURL: apiBaseUrl,
-    withCredentials: true
+    withCredentials: false
 })
 
 let base = "/api";
@@ -38,7 +38,7 @@ apiRequest.interceptors.response.use(
             ClearToken()
             // 跳转到登录页面
             console.log("err on auth token")
-            window.location.href = "#/login";
+            window.location.href = "/login";
             console.log("reloaded to login")
 
             return Promise.reject(data)
