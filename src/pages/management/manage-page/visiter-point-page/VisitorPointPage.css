@@ -1,0 +1,24 @@
+.point-list-item{
+    padding: 3px;
+    margin: 10px;
+    background-color: #e2efc0;
+    cursor: pointer;
+}
+
+.point-list-item:hover{
+    padding: 3px;
+    margin: 10px;
+    background-color: #b9ec42;
+    cursor: pointer;
+}
+
+.point-list-item-current{
+    padding: 3px;
+    margin: 10px;
+    background-color: #b9ec42;
+    cursor: pointer;
+}
+
+.point-list{
+    overflow-y: scroll;
+}
