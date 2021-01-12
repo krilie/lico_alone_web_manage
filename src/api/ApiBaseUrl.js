@@ -1,6 +1,13 @@
 import {ToastWarn} from "../utils/toastNormal";
 
-export const apiBaseUrl = 'https://api-app.lizo.top'
+
+export let apiBaseUrl = "";
+console.log(process.env)
+if (process.env.NODE_ENV === "development") {
+    apiBaseUrl = ''
+} else {
+    apiBaseUrl = 'https://api-app.lizo.top'
+}
 export const imageProxy = 'https://imageproxy.lizo.top' // 缩略图地址
 export const minioUrl = 'https://minio.lizo.top' // minio地址
 export const imageProxied = (path, ops) => imageProxy + "/" + ops + "/" + path.replace(minioUrl+"/","")

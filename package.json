@@ -2,6 +2,7 @@
   "name": "lizo_web_manage",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://api-app.lizo.top",
   "dependencies": {
     "@ckeditor/ckeditor5-react": "^3.0.0",
     "@testing-library/jest-dom": "^5.11.6",
