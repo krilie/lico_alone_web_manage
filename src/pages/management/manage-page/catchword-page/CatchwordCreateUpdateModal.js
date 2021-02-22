@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Form, Input, InputNumber, Modal, Spin} from "antd";
-import {manageCreateCarousel, manageUpdateCarousel} from "../../../../api/ManageCarouselApi";
 import TextArea from "antd/lib/input/TextArea";
 import {checkResDataWithToast} from "../../../../api/ApiBaseUrl";
 import {ToastErr, ToastNormal} from "../../../../utils/toastNormal";
+import {manageAddCatchword, manageUpdateCatchword} from "../../../../api/ManageCatchwordApi";
 
 /**
  * props: isShow isCreate data success(msg) failure(msg)
@@ -53,7 +53,7 @@ export class CatchwordCreateUpdateModal extends Component {
             title: this.formRef.current.getFieldValue("title"),
         }
         this.setState({waiting: true})
-        manageUpdateCarousel(data).then(res => {
+        manageUpdateCatchword(data).then(res => {
             var data = checkResDataWithToast(res);
             if (data === undefined){
                 ToastNormal(data.message)
@@ -79,7 +79,7 @@ export class CatchwordCreateUpdateModal extends Component {
             title: this.formRef.current.getFieldValue("title"),
         }
         this.setState({waiting: true})
-        manageCreateCarousel(data).then(res => {
+        manageAddCatchword(data).then(res => {
             var data = checkResDataWithToast(res);
             if (data === undefined){
                 ToastNormal(data.message)
