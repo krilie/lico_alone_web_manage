@@ -5,7 +5,7 @@ export const manageAddCatchword = (catchword) => {
 }
 
 export const manageDeleteCatchword = (catchwordId) => {
-    return postJson("/manage/catchword/delete", {id: catchwordId})
+    return postForm("/manage/catchword/delete", {id: catchwordId})
 }
 
 export const manageQueryCatchword = (keyword, page_size, page_num) => {

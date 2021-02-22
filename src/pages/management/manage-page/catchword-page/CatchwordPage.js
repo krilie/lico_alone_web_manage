@@ -47,15 +47,17 @@ class CatchwordPage extends Component {
 
     columns = [
         {title: 'id', key: 'id', dataIndex: 'id', width: "150px"},
-        {title: 'created_at', key: 'created_at', dataIndex: 'created_at',width:"230px"},
-        {title: 'updated_at', key: 'updated_at', dataIndex: 'updated_at',width:"230px"},
+        {title: 'created_at', key: 'created_at', dataIndex: 'created_at', width: "230px"},
+        {title: 'updated_at', key: 'updated_at', dataIndex: 'updated_at', width: "230px"},
         {title: 'title', key: 'title', dataIndex: 'title'},
         {title: 'content', key: 'content', dataIndex: 'content'},
         {title: 'sort', key: 'sort', dataIndex: 'sort'},
-        {title: '操作',key: '操作',render: val=><div>
+        {
+            title: '操作', key: '操作', render: val => <div>
                 <Button type='primary'>修改</Button>
-                <Button type='primary' onClick={()=>this.deleteCatchword(val.id)}>删除</Button>
-            </div>}
+                <Button type='primary' onClick={() => this.deleteCatchword(val.id)}>删除</Button>
+            </div>
+        }
     ];
 
     render() {
@@ -110,14 +112,12 @@ class CatchwordPage extends Component {
 
     deleteCatchword(id) {
 
-        this.setState({loading: true})
-
         manageDeleteCatchword(id).then(res => {
             checkResDataWithToast(res)
         }).catch(err => {
             message.error(err.toString())
         }).finally(() => {
-            this.setState({loading: false})
+            this.onLoadPageDataWithSearch(this.state.catchwords.page_info.page_num, this.state.catchwords.page_info.page_size)
         })
     }
 }
