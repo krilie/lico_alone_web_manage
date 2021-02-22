@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {Button, Form, Input, message, Table} from "antd";
+import {Button, Card, Form, Input, message, Table} from "antd";
 import {manageQueryCatchword} from "../../../../api/ManageCatchwordApi";
+import "./CatchwordPage.css"
 
 class CatchwordPage extends Component {
 
@@ -44,12 +45,12 @@ class CatchwordPage extends Component {
     }
 
     columns = [
-        {title: 'id', key: 'id', dataIndex: 'id', render: val => <div style={{width: "50px"}}>{val}</div>},
-        {title: 'sort', key: 'sort', dataIndex: 'sort'},
+        {title: 'id', key: 'id', dataIndex: 'id', width: "150px"},
+        {title: 'created_at', key: 'created_at', dataIndex: 'created_at',width:"230px"},
+        {title: 'updated_at', key: 'updated_at', dataIndex: 'updated_at',width:"230px"},
         {title: 'title', key: 'title', dataIndex: 'title'},
-        {title: 'updated_at', key: 'updated_at', dataIndex: 'updated_at'},
-        {title: 'created_at', key: 'created_at', dataIndex: 'created_at'},
         {title: 'content', key: 'content', dataIndex: 'content'},
+        {title: 'sort', key: 'sort', dataIndex: 'sort'},
     ];
 
     render() {
@@ -75,9 +76,9 @@ class CatchwordPage extends Component {
             </div>
 
         return (
-            <div>
+            <Card className="carousel-card" bodyStyle={{padding: "10px"}}>
                 {searchForm}
-                <div className="table">
+                <div>
                     <Table
                         bordered
                         scroll={{x: "400px", scrollToFirstRowOnChange: true}}
@@ -98,7 +99,7 @@ class CatchwordPage extends Component {
                         onChange={this.onTableParamChange}
                         dataSource={pagedData.data}/>
                 </div>
-            </div>
+            </Card>
         );
     }
 }
