@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Button, Card, Form, Input, message, Table} from "antd";
-import {manageQueryCatchword} from "../../../../api/ManageCatchwordApi";
+import {manageDeleteCatchword, manageQueryCatchword} from "../../../../api/ManageCatchwordApi";
 import "./CatchwordPage.css"
+import {checkResDataWithToast} from "../../../../api/ApiBaseUrl";
 
 class CatchwordPage extends Component {
 
@@ -51,6 +52,10 @@ class CatchwordPage extends Component {
         {title: 'title', key: 'title', dataIndex: 'title'},
         {title: 'content', key: 'content', dataIndex: 'content'},
         {title: 'sort', key: 'sort', dataIndex: 'sort'},
+        {title: '操作',key: '操作',render: val=><div>
+                <Button type='primary'>修改</Button>
+                <Button type='primary' onClick={()=>this.deleteCatchword(val.id)}>删除</Button>
+            </div>}
     ];
 
     render() {
@@ -101,6 +106,19 @@ class CatchwordPage extends Component {
                 </div>
             </Card>
         );
+    }
+
+    deleteCatchword(id) {
+
+        this.setState({loading: true})
+
+        manageDeleteCatchword(id).then(res => {
+            checkResDataWithToast(res)
+        }).catch(err => {
+            message.error(err.toString())
+        }).finally(() => {
+            this.setState({loading: false})
+        })
     }
 }
 
