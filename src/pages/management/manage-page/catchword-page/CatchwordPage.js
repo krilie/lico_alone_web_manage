@@ -3,13 +3,44 @@ import {Button, Card, Form, Input, message, Table} from "antd";
 import {manageDeleteCatchword, manageQueryCatchword} from "../../../../api/ManageCatchwordApi";
 import "./CatchwordPage.css"
 import {checkResDataWithToast} from "../../../../api/ApiBaseUrl";
+import {CatchwordCreateUpdateModal} from "./CatchwordCreateUpdateModal";
 
 class CatchwordPage extends Component {
 
-    state = {
-        defPageNum: 1, defPageSize: 10,
-        loading: false,
-        catchwords: undefined,
+    constructor(props) {
+        super(props);
+        this.state = {
+            defPageNum: 1, defPageSize: 10,
+            loading: false,
+            catchwords: undefined,
+            createUpdateDialog: {isCreate:false,data:{},isShow:false,
+                success: this.createUpdateDialogSuccessClick,
+                cancel: this.createUpdateDialogCancelClick,
+                failure: this.createUpdateDialogCancelClick,
+            }
+        }
+    }
+
+    createUpdateDialogSuccessClick = (msg) => {
+        message.info(msg)
+        const {createUpdateDialog} = this.state
+        this.loadCarouselData()
+        this.setState({
+            createUpdateDialog: {
+                ...createUpdateDialog,
+                isShow: false,
+            }
+        })
+    }
+    createUpdateDialogCancelClick = (msg) => {
+        message.info(msg)
+        const {createUpdateDialog} = this.state
+        this.setState({
+            createUpdateDialog: {
+                ...createUpdateDialog,
+                isShow: false,
+            }
+        })
     }
 
     formRef = React.createRef();
@@ -54,7 +85,7 @@ class CatchwordPage extends Component {
         {title: 'sort', key: 'sort', dataIndex: 'sort'},
         {
             title: '操作', key: '操作', render: val => <div>
-                <Button type='primary'>修改</Button>
+                <Button type='primary' onClick={()=>this.showUpdateDialog(val)}>修改</Button>
                 <Button type='primary' onClick={() => this.deleteCatchword(val.id)}>删除</Button>
             </div>
         }
@@ -62,7 +93,7 @@ class CatchwordPage extends Component {
 
     render() {
         const pagedData = this.state.catchwords
-        const {loading, defPageNum, defPageSize} = this.state
+        const {loading, defPageNum, defPageSize,createUpdateDialog} = this.state
         // 查询form参数
         const searchForm = <Form
             layout={"inline"}
@@ -84,6 +115,7 @@ class CatchwordPage extends Component {
 
         return (
             <Card className="carousel-card" bodyStyle={{padding: "10px"}}>
+                <CatchwordCreateUpdateModal {...createUpdateDialog} />
                 {searchForm}
                 <div>
                     <Table
@@ -120,6 +152,30 @@ class CatchwordPage extends Component {
             this.onLoadPageDataWithSearch(this.state.catchwords.page_info.page_num, this.state.catchwords.page_info.page_size)
         })
     }
+
+    showCreateDialog = () => {
+        const {createUpdateDialog} = this.state
+        this.setState({
+            createUpdateDialog: {
+                ...createUpdateDialog,
+                data: {id:"",title: false,content:"",sort:0},
+                isCreate: true,
+                isShow: true,
+            }
+        })
+    }
+    showUpdateDialog = (data) => {
+        const {createUpdateDialog} = this.state
+        this.setState({
+            createUpdateDialog: {
+                ...createUpdateDialog,
+                data: data,
+                isCreate: false,
+                isShow: true,
+            }
+        })
+    }
+
 }
 
 export default CatchwordPage;
