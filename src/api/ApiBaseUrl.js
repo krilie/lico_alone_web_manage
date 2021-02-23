@@ -15,6 +15,7 @@ export const imageProxied = (path, ops) => imageProxy + "/" + ops + "/" + path.r
 // res.data is returned data from api
 // with have filed [code.message.data]
 export const checkResData = (res) => res.data.code === 2000 ? res.data.data : undefined;
+export const checkResDataBool = (res) => res.data.code === 2000 ? true : false;
 export const getResData = (res) => checkResData(res) ? res.data.data : undefined;
 export const checkIsNotFound = (res) => res.data.code === 4004;
 export const checkResDataWithToast = (res) => {

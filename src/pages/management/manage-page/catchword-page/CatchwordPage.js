@@ -24,13 +24,13 @@ class CatchwordPage extends Component {
     createUpdateDialogSuccessClick = (msg) => {
         message.info(msg)
         const {createUpdateDialog} = this.state
-        this.loadCarouselData()
         this.setState({
             createUpdateDialog: {
                 ...createUpdateDialog,
                 isShow: false,
             }
         })
+        this.onLoadPageData(this.state.catchwords.page_info.page_num, this.state.catchwords.page_info.page_size)
     }
     createUpdateDialogCancelClick = (msg) => {
         message.info(msg)

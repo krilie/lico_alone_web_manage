@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Form, Input, InputNumber, Modal, Spin} from "antd";
 import TextArea from "antd/lib/input/TextArea";
-import {checkResDataWithToast} from "../../../../api/ApiBaseUrl";
 import {ToastErr, ToastNormal} from "../../../../utils/toastNormal";
 import {manageAddCatchword, manageUpdateCatchword} from "../../../../api/ManageCatchwordApi";
 
@@ -54,12 +53,11 @@ export class CatchwordCreateUpdateModal extends Component {
         }
         this.setState({waiting: true})
         manageUpdateCatchword(data).then(res => {
-            var data = checkResDataWithToast(res);
-            if (data === undefined){
-                ToastNormal(data.message)
-                failure(data.message)
-            } else {
-                success(data.message)
+            if (res.data.code === 2000){
+                success(res.data.message)
+            }else{
+                ToastNormal(res.data.message)
+                failure(res.data.message)
             }
         }).catch(res=>{
             ToastErr(res)
@@ -80,12 +78,11 @@ export class CatchwordCreateUpdateModal extends Component {
         }
         this.setState({waiting: true})
         manageAddCatchword(data).then(res => {
-            var data = checkResDataWithToast(res);
-            if (data === undefined){
-                ToastNormal(data.message)
-                failure(data.message)
-            } else {
-                success(data.message)
+            if (res.data.code === 2000){
+                success(res.data.message)
+            }else{
+                ToastNormal(res.data.message)
+                failure(res.data.message)
             }
         }).catch(res=>{
             ToastErr(res)
