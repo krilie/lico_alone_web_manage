@@ -31,7 +31,7 @@ class ArticleListPage extends Component {
         this.setState({loading: true})
         manageQueryArticle(searchKey, pageNum, pageSize).then(res => {
             this.setState({
-                articles: res.data.data.data
+                articles: res.data.data
             })
         }).catch(err => {
             message.error(err.toString())
