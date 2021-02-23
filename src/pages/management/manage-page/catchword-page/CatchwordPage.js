@@ -106,6 +106,10 @@ class CatchwordPage extends Component {
                 <Button type="primary"
                         onClick={() => this.onLoadPageDataWithSearch(defPageNum, defPageSize)}>搜索</Button>
             </Form.Item>
+            <Form.Item>
+                <Button type="primary"
+                        onClick={() => this.showCreateDialog()}>添加</Button>
+            </Form.Item>
         </Form>
 
         if (pagedData === undefined || pagedData === {})
