@@ -6,6 +6,9 @@ import UploadOutlined from "@ant-design/icons/lib/icons/UploadOutlined";
 import CopyToBoard from "../../../../utils/CopyToBoard";
 import {Input} from 'antd';
 import {imageProxied} from "../../../../api/ApiBaseUrl";
+import {Player} from 'video-react';
+import {GetFileType} from "../../../../utils/suffixHelper";
+import 'video-react/dist/video-react.css';
 
 class FilePage extends Component {
     // 表格列信息
@@ -14,7 +17,22 @@ class FilePage extends Component {
         {title: '创建时间', key: 'created_at', dataIndex: 'created_at', sorter: {multiple: 1,}},
         {
             title: '地址', key: 'url', dataIndex: 'url',
-            render: text => <img src={imageProxied(text,"200x150,fit")} alt={"img"}/>
+            render: text => {
+                switch (GetFileType(text)) {
+                    case 'image':
+                        return <img src={imageProxied(text, "200x150,fit")} alt={"img"}/>
+                    case 'video':
+                        return <Player>
+                            <source src={text}/>
+                        </Player>
+                    case 'txt':
+                        return <div>{text}</div>
+                    case 'bin':
+                        return <div>0010010211...</div>
+                    default:
+                        return <div>0010010211...</div>
+                }
+            }
         },
         {title: '用户ID', key: 'user_id', dataIndex: 'user_id'},
         {
